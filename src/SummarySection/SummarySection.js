@@ -1,21 +1,16 @@
 import React from 'react';
-// This object will allow us to
-// easily convert numbers into US dollar values
+
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD'
 });
 
-
 class SummarySection extends React.Component {
   render() {
-
-
     const { selectedFeatures } = this.props
     const summary = Object.keys(selectedFeatures).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = selectedFeatures[feature];
-
       return (
         <div className="summary__option" key={featureHash}>
           <div className="summary__option__label">{feature} </div>
@@ -32,14 +27,6 @@ class SummarySection extends React.Component {
       0
     );
 
-
-
-
-
-
-
-
-
     return (
       <section className="main__summary">
         <h2>Your cart</h2>
@@ -51,7 +38,7 @@ class SummarySection extends React.Component {
           </div>
         </div>
       </section>
-    )
+    );
   }
 }
 
