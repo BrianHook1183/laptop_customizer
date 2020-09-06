@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import CustomizeSection from './CustomizeSection/CustomizeSection';
+// import SummarySection from './SummarySection/SummarySection';
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
@@ -14,6 +16,9 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 });
 
 class App extends Component {
+
+
+// stays here
   state = {
     selected: {
       Processor: {
@@ -34,7 +39,10 @@ class App extends Component {
       }
     }
   };
+// stays here
 
+
+// Has to stay here to update state. function needs to CustomizeSection
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
@@ -42,8 +50,16 @@ class App extends Component {
       selected
     });
   };
+// Has to stay here to update state. function needs to CustomizeSection
+
+
 
   render() {
+
+
+
+
+  // needs to be moved to CustomizeSection
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const options = this.props.features[feature].map(item => {
@@ -74,7 +90,11 @@ class App extends Component {
         </fieldset>
       );
     });
+  // needs to be moved to CustomizeSection
 
+
+
+// moves to SummarySection
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = this.state.selected[feature];
@@ -94,17 +114,26 @@ class App extends Component {
       (acc, curr) => acc + this.state.selected[curr].cost,
       0
     );
+// moves to be moved to SummarySection
 
+
+
+  // Stays in App.js
     return (
       <div className="App">
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
         <main>
+
+        {/* already in CustomizeSection . needs features={FEATURES} prop to be passed*/}
           <form className="main__form">
             <h2>Customize your laptop</h2>
             {features}
           </form>
+        {/* already in CustomizeSection */}
+
+        {/* already in SummarySection */}
           <section className="main__summary">
             <h2>Your cart</h2>
             {summary}
@@ -115,9 +144,12 @@ class App extends Component {
               </div>
             </div>
           </section>
+        {/* already in SummarySection */}
+
         </main>
       </div>
     );
+  // Stays in App.js
   }
 }
 
