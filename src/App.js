@@ -44,7 +44,6 @@ class App extends Component {
         </header>
         <main>
           <CustomizeSection 
-            features={this.props.features}
             selectedFeatures={this.state.selected}
             handleSelection={(feature, newValue) =>this.updateFeature(feature, newValue)}
           />

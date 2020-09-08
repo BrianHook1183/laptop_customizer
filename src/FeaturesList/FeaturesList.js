@@ -1,5 +1,6 @@
 import React from 'react';
 import slugify from 'slugify';
+import FEATURES from '../FEATURES';
 import './FeatureList.css';
 
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
@@ -10,9 +11,9 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 class FeaturesList extends React.Component {
   render() {
     const { selectedFeatures } = this.props
-    const features = Object.keys(this.props.features).map((feature, idx) => {
+    const features = Object.keys(FEATURES).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
-      const options = this.props.features[feature].map(item => {
+      const options = FEATURES[feature].map(item => {
         const itemHash = slugify(JSON.stringify(item));
         return (
           <div key={itemHash} className="feature__item">
