@@ -2,6 +2,7 @@ import React from 'react';
 import slugify from 'slugify';
 import FEATURES from '../FEATURES';
 import FeatureItem from '../FeatureItem/FeatureItem';
+import FeatureOptions from '../FeatureOptions/FeatureOptions';
 import './FeatureList.css';
 
 class FeaturesList extends React.Component {
@@ -23,12 +24,11 @@ class FeaturesList extends React.Component {
       });
 
       return (
-        <fieldset className="feature" key={featureHash}>
-          <legend className="feature__name">
-            <h3>{feature}</h3>
-          </legend>
-          {options}
-        </fieldset>
+        <FeatureOptions 
+          featureHash= {featureHash}
+          feature= {feature}
+          options= {options}
+        />
       );
     });
 
