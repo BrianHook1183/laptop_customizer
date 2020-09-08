@@ -14,6 +14,7 @@ class FeaturesList extends React.Component {
         const itemHash = slugify(JSON.stringify(item));
         return (
           <FeatureItem 
+            key= {itemHash}
             itemHash={itemHash}
             feature= {feature}
             item= {item}
@@ -25,6 +26,7 @@ class FeaturesList extends React.Component {
 
       return (
         <FeatureOptions 
+          key= {featureHash}
           featureHash= {featureHash}
           feature= {feature}
           options= {options}
